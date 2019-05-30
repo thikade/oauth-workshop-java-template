@@ -3,10 +3,30 @@
 <head>
     <title>Willhaben OAuth 2.0 Workshop</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <style>
+    body { background-color: white;}
+    #id_response {  float: left; display: inline; width: 90%; 
+                    word-break: break-all; word-wrap: break-word;
+                    font-family: "courier new", courier, monospace;
+    }
+    </style>
+    
 </head>
 <body>
+<h3>Callback Response</h3>
+<div id="id_response"><div>
 <script>
-    console.log(window.location.hash)
+    console.log(window.location.hash);
+    var hashString = window.location.hash;
+    var tokenArray = hashString.substr(1).split("&");
+    var out = "";
+    for (var i in tokenArray) {
+        var tokenPair = tokenArray[i].split("=");
+        out = out + "<p><b>" + tokenPair[0] + "</b>\n\n" + tokenPair[1]
+    }
+    document.getElementById('id_response').innerHTML = out;
+    
 </script>
 </body>
 </html>
